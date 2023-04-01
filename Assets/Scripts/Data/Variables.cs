@@ -10,7 +10,17 @@ public class Variables
 
     private static Data data;
 
-    public static User GetPlayer()
+    public static Data Data
+    {
+        get { 
+            if (data == null && //проверяем, загружен ли пользователь
+                LoadData() == null) data = new("user"); //если пользователя не существует, то создаем нового
+            return data;
+        }
+        set { data = value; }
+    }
+
+    public static User GetUser()
     {
         if (data == null)
         {
@@ -19,9 +29,13 @@ public class Variables
                 data = new("User name");
             }
         }
-        return data.Player;
+        return data.User;
     }
 
+    public static BuildInfo GetBuildInfo()
+    {
+        return data.BuildInfo;
+    }
     public static void AddCash(float added)
     {
         if (data!= null) {
@@ -29,6 +43,7 @@ public class Variables
             SaveData();
         }
         
+
     }
 
     public static int GetCash()

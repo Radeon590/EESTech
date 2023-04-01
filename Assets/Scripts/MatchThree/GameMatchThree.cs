@@ -30,7 +30,7 @@ public class GameMatchThree : MonoBehaviour
     public void Exit()
     {
         Variables.AddCash(int.Parse(ScoreLabel.text) * ScoreFactor);
-        SceneManager.LoadScene("MainArchitecrureScene");
+        SceneManager.LoadScene("TownMap");
     }
 
 

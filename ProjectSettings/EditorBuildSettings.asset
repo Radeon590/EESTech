@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainArchitecrureScene.unity
     guid: cfa56fe27e3ec5946a56e912994bd1bc
+  - enabled: 1
+    path: Assets/Scenes/TownMap.unity
+    guid: 37cc1527033878b44af9dbecc2fe41b5
+  - enabled: 1
+    path: Assets/Scenes/MatchThree.unity
+    guid: 5110a981c7c816843bbf70aa0e07a2a2
   m_configObjects: {}

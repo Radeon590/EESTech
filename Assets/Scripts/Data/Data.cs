@@ -12,17 +12,37 @@ public class User
     }
 }
 
+[Serializable]
+public class BuildInfo
+{
+    public bool BuildMatchThree;
+    public bool Build1;
+    public bool Build2;
+    public bool Build3;
+    public bool Build4;
 
+    public BuildInfo()
+    {
+        BuildMatchThree = false;
+        Build1 = false;
+        Build2 = false;
+        Build3 = false;
+        Build4 = false;
+    }
+}
 
 [Serializable]
 public class Data
 {
     public int Cash;
-    public User Player;
+    public User User;
+    public BuildInfo BuildInfo;
 
     public Data(string name)
     {
         Cash = 0;
-        Player = new User(name);
+        User = new User(name);
+        BuildInfo= new BuildInfo();
     }
+
 }
