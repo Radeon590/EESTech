@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LessonInfo : MonoBehaviour
+[CreateAssetMenu(fileName = "NewLesson", menuName = "Lessons/Lesson")]
+public class LessonInfo : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string lessonName;
+    [SerializeField] private List<QuestionInfo> questionsBank = new List<QuestionInfo>();
+    [SerializeField] private int numberOfRepeats;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string LessonName { get { return lessonName; } }
+    public List<QuestionInfo> QuestionsBank { get { return questionsBank; } }
+    public int NumberOfRepeats { get { return numberOfRepeats; } }
 }
