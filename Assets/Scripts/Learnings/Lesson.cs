@@ -10,6 +10,11 @@ public class Lesson : MonoBehaviour
     [SerializeField] private QuestionsGenerator questionsGenerator;
     [SerializeField] private Slider lessonRepeatsBar;
 
+    private void Awake()
+    {
+        lessonRepeatsBar.value = PlayerPrefs.GetInt(lesson.LessonName, 0);
+    }
+
     public void Success()
     {
         Variables.Data.LessonsDone++;
@@ -17,6 +22,7 @@ public class Lesson : MonoBehaviour
         if(lessonRepeatsBar.value != lessonRepeatsBar.maxValue)
         {
             lessonRepeatsBar.value++;
+            PlayerPrefs.SetInt(lesson.LessonName, (int)lessonRepeatsBar.value);
         }
     }
 

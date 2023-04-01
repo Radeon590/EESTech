@@ -217,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 8507162519786017109, guid: ac203405710b8a84f96c148a22c00e78, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: db84dd0fccd06f44d9664c3e5b16832c, type: 3}
+      objectReference: {fileID: 21300000, guid: e5e3265f5cb5fd94e95617ee0aa70f95, type: 3}
     - target: {fileID: 8507162519786017111, guid: ac203405710b8a84f96c148a22c00e78, type: 3}
       propertyPath: m_Name
       value: NavigationPanelElement (2)
@@ -408,7 +408,7 @@ PrefabInstance:
     - target: {fileID: 9004652413848574380, guid: 17c4712a24f9cfd408f5ba84131032bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 53a18fdb92cd2554d9e84a3a68d5dfdb, type: 3}
+      objectReference: {fileID: 21300000, guid: 5c87086646834c243a9a2b04932bd0a3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c4712a24f9cfd408f5ba84131032bc, type: 3}
 --- !u!224 &166035735 stripped
@@ -895,7 +895,7 @@ PrefabInstance:
     - target: {fileID: 9004652413848574380, guid: 17c4712a24f9cfd408f5ba84131032bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c7948b2aa6a1c4d4c93a09caadf5d10b, type: 3}
+      objectReference: {fileID: 21300000, guid: dc4a4bfbaf2143849adbcd97ddc75e99, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c4712a24f9cfd408f5ba84131032bc, type: 3}
 --- !u!224 &655728439 stripped
@@ -1408,7 +1408,7 @@ PrefabInstance:
     - target: {fileID: 8507162519786017109, guid: ac203405710b8a84f96c148a22c00e78, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 61f0c1e098ce0464cab0c7cc494b3be9, type: 3}
+      objectReference: {fileID: 21300000, guid: 123fef22fbc380c41945e293f8903fc7, type: 3}
     - target: {fileID: 8507162519786017111, guid: ac203405710b8a84f96c148a22c00e78, type: 3}
       propertyPath: m_Name
       value: NavigationPanelElement (1)
@@ -2747,7 +2747,7 @@ PrefabInstance:
     - target: {fileID: 8507162519786017109, guid: ac203405710b8a84f96c148a22c00e78, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5ac0d08e760943d45be869a63332c13f, type: 3}
+      objectReference: {fileID: 21300000, guid: c3588b013cfd99a46a6a6888168d46b6, type: 3}
     - target: {fileID: 8507162519786017111, guid: ac203405710b8a84f96c148a22c00e78, type: 3}
       propertyPath: m_Name
       value: NavigationPanelElement
@@ -2852,6 +2852,6 @@ PrefabInstance:
     - target: {fileID: 9004652413848574380, guid: 17c4712a24f9cfd408f5ba84131032bc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6328c4d1875edfa4faae5633f4bfb124, type: 3}
+      objectReference: {fileID: 21300000, guid: df88a6ab63be03c46a6f94c133e10645, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c4712a24f9cfd408f5ba84131032bc, type: 3}
