@@ -10,8 +10,10 @@ public class Activity : MonoBehaviour
 
     public void Activate()
     {
+        ActivitiesController.CurrentActivity.Deactivate();
         OnActivate.Invoke();
         ActivitiesController.CurrentActivity = this;
+        gameObject.SetActive(true);
     }
 
     public void Deactivate()
@@ -19,5 +21,6 @@ public class Activity : MonoBehaviour
         if(ActivitiesController.CurrentActivity == this)
             ActivitiesController.CurrentActivity = null;
         OnDeactivate.Invoke();
+        gameObject.SetActive(false);
     }
 }

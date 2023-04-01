@@ -10,6 +10,12 @@ public class Variables
 
     private static Data data;
 
+    public static Data Data
+    {
+        get { return data; }
+        set { data = value; }
+    }
+
     public static User GetPlayer()
     {
         if (data == null)
