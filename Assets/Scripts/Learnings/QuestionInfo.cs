@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionInfo : MonoBehaviour
+[CreateAssetMenu(fileName = "NewQuestion", menuName = "Lessons/Question")]
+public class QuestionInfo : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string question;
+    [SerializeField] private List<string> options;
+    [SerializeField] private int correctOptionIndex;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string Question { get { return question; } }
+    public List<string> Options { get { return options; } }
+    public int CorrectOptionIndex { get { return correctOptionIndex; } }
+}
+
+public enum QuestionTypes
+{
+    test,
+    comunication
 }
