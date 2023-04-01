@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -38,11 +39,20 @@ public class Data
     public User User;
     public BuildInfo BuildInfo;
 
+    public List<string> QuestionsBank;
+    public int LessonsDone;
+    public int HP;
+
     public Data(string name)
     {
         Cash = 0;
         User = new User(name);
         BuildInfo= new BuildInfo();
+
+        User = new User(name);
+        QuestionsBank = new List<string>();
+        LessonsDone = 0;
+        HP = 50;
     }
 
 }
