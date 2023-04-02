@@ -33,6 +33,17 @@ public class BuildInfo
 }
 
 [Serializable]
+public class Games
+{
+    public int MatchThreeRecord;
+
+    public Games()
+    {
+        MatchThreeRecord = 0;
+    }
+}
+
+[Serializable]
 public class Data
 {
     public int Cash;
@@ -43,16 +54,17 @@ public class Data
     public int LessonsDone;
     public int HP;
 
+    public Games games;
+
     public Data(string name)
     {
         Cash = 0;
         User = new User(name);
         BuildInfo= new BuildInfo();
-
-        User = new User(name);
         QuestionsBank = new List<string>();
         LessonsDone = 0;
         HP = 50;
+        games = new Games();
     }
 
 }

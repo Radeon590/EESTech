@@ -56,10 +56,10 @@ public class IconsAnimation
         Image image1 = GetObject.GetImage(button1);
         Image image2 = GetObject.GetImage(button2);
 
-        Canvas canvas = GameObject.Find("Board").GetComponent<Canvas>();
+        Transform parentTransform = button1.transform.parent.transform.parent.transform;//GameObject.Find("Board").transform;
 
-        image1.transform.SetParent(canvas.transform);
-        image2.transform.SetParent(canvas.transform);
+        image1.transform.SetParent(parentTransform.transform);
+        image2.transform.SetParent(parentTransform.transform);
 
         Transform image1Transform = image1.transform;
         Transform image2Transform = image2.transform;

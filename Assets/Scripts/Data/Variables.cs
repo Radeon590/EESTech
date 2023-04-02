@@ -9,6 +9,12 @@ public class Variables
     private const string SAVE_PATH = "/Data.dat";
 
     private static Data data;
+    private static GameObject activeActivityPanel;
+    public static GameObject ActiveActivityPanel
+    {
+        get { return activeActivityPanel; }
+        set { activeActivityPanel = value; }
+    }
 
     public static Data Data
     {
@@ -42,8 +48,6 @@ public class Variables
             data.Cash += Mathf.FloorToInt(added);
             SaveData();
         }
-        
-
     }
 
     public static int GetCash()

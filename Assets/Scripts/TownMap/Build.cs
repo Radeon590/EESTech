@@ -102,7 +102,7 @@ public class Build : MonoBehaviour
         {
             case "BuildMain": //TODO нажато на главное здание
                 break;
-            case "BuildMatchThree": SceneManager.LoadScene("MatchThree");
+            case "BuildMatchThree": GameObject.Find("MainPanel").GetComponent<ActivityController>().GoToMatchThree();
                 break;
             default: ShowMessage("Здание не работает");
                 break;

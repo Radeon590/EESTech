@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class GameMatchThree : MonoBehaviour
     public float FallDuration;
     public int Size;
     public Text ScoreLabel;
+    public Text MaxScoreLabel;
     public Color32 colorItem;// = new(150, 68, 40, 255);
     public Color32 colorSelectedItem;// = new(75, 34, 20, 255);
 
@@ -27,19 +29,21 @@ public class GameMatchThree : MonoBehaviour
     Button itemSelected = null;
 
     public float ScoreFactor;
-    public void Exit()
-    {
-        Variables.AddCash(int.Parse(ScoreLabel.text) * ScoreFactor);
-        SceneManager.LoadScene("TownMap");
-    }
 
+    int startCash;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize() => images = Resources.LoadAll<Icon>("MatchThree/Icons/");
 
-    void Start()
+    public void Load()
     {
+        startCash = Variables.Data.Cash;
+
         matchThree = new MatchThree(Size, images.Length);
+        int? s = Variables.Data.games.MatchThreeRecord;
+        if (s == null) MaxScoreLabel.text = "0";
+        else MaxScoreLabel.text = s.ToString();
+        ScoreLabel.text = "0";
 
         buttons = GetObject.InitButtons(Size);
         
@@ -128,9 +132,6 @@ public class GameMatchThree : MonoBehaviour
 
 
         } while (!(itemsFall.Count == 0 && itemsFallNew.Count == 0));
-        
-
-        
     }
 
     private async Task DeleteItems()
@@ -162,5 +163,15 @@ public class GameMatchThree : MonoBehaviour
         }
         await animation.Play();
         ScoreLabel.text = score.ToString();
+        if (int.Parse(ScoreLabel.text) > int.Parse(MaxScoreLabel.text))
+        {
+            MaxScoreLabel.text = ScoreLabel.text;
+            Variables.Data.games.MatchThreeRecord = score;
+        }
+
+        if (score * ScoreFactor >= 1)
+        {
+            Variables.AddCash((startCash + score * ScoreFactor) - Variables.GetCash());
+        }
     }
 }
