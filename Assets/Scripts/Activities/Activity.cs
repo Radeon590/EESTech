@@ -10,7 +10,7 @@ public class Activity : MonoBehaviour
 
     public void Activate()
     {
-        ActivitiesController.CurrentActivity.Deactivate();
+        ActivitiesController.CurrentActivity?.Deactivate();
         OnActivate.Invoke();
         ActivitiesController.CurrentActivity = this;
         gameObject.SetActive(true);
