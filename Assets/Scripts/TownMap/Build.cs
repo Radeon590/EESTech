@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Build : MonoBehaviour
 {
+    [SerializeField] private Activity match3Activity;
     
     public int price;
     public Text text;
@@ -64,7 +65,7 @@ public class Build : MonoBehaviour
     {
         if (!isActive)
         {
-            if (Variables.GetCash() >= price)
+            if (Variables.Data.Cash >= price)
             {
                 switch (gameObject.transform.gameObject.name)
                 {
@@ -86,13 +87,18 @@ public class Build : MonoBehaviour
                     case "Build4":
                         Variables.Data.BuildInfo.Build4 = true;
                         break;
-                    default: ShowMessage("Неизвестное здание");
+                    default:
+                        ShowMessage("Неизвестное здание");
                         break;
                 }
                 Variables.AddCash(-price);
                 Activate();
             }
-            else ShowMessage("Недостаточно денег");
+            else 
+            {
+                if(Application.platform == RuntimePlatform.Android) ShowMessage("Недостаточно денег");
+            }
+            
         }              
     }
 
@@ -102,7 +108,8 @@ public class Build : MonoBehaviour
         {
             case "BuildMain": //TODO нажато на главное здание
                 break;
-            case "BuildMatchThree": GameObject.Find("MainPanel").GetComponent<ActivityController>().GoToMatchThree();
+            case "BuildMatchThree": 
+                match3Activity.Activate();
                 break;
             default: ShowMessage("Здание не работает");
                 break;
@@ -116,17 +123,20 @@ public class Build : MonoBehaviour
     /// <param name="message"></param>
     void ShowMessage(string message)
     {
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-        if (unityActivity != null)
+        if(Application.platform == RuntimePlatform.Android)
         {
-            AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
-            unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+            AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+
+            if (unityActivity != null)
             {
-                AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity, message, 0);
-                toastObject.Call("show");
-            }));
+                AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
+                unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+                {
+                    AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity, message, 0);
+                    toastObject.Call("show");
+                }));
+            }
         }
     }
     public void Activate()

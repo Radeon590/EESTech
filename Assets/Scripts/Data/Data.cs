@@ -58,7 +58,7 @@ public class Data
 
     public Data(string name)
     {
-        Cash = 0;
+        Cash = 100;
         User = new User(name);
         BuildInfo= new BuildInfo();
         QuestionsBank = new List<string>();

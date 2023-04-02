@@ -61,7 +61,7 @@ public class Variables
         SaveData();
     }
 
-    private static void SaveData()
+    public static void SaveData()
     {
         BinaryFormatter bf = new();
         FileStream file = File.Create(Application.persistentDataPath + SAVE_PATH);
@@ -83,6 +83,7 @@ public class Variables
             BinaryFormatter bf = new();
             FileStream file = File.Open(Application.persistentDataPath + SAVE_PATH, FileMode.Open);
             data = (Data)bf.Deserialize(file);
+            Debug.Log(data.QuestionsBank.Count);
             file.Close();
             res = 0;
         }

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class GameMashine : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Activity firstActivity;
+
     void Start()
     {
-        
+        InitialzeApp();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitialzeApp()
     {
-        
+        if (Variables.LoadData() != 0)
+        {
+            Variables.CreatePlayer("пчеловек");
+        }
+        firstActivity.Activate();
     }
 }

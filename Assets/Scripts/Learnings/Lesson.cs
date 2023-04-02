@@ -5,33 +5,47 @@ using UnityEngine.UI;
 
 public class Lesson : MonoBehaviour
 {
-    [SerializeField] private LessonInfo lesson;
-    [SerializeField] private Activity lessonActivity;
-    [SerializeField] private QuestionsGenerator questionsGenerator;
+    [HideInInspector] public LessonInfo LessonInfo;
+    [HideInInspector] public LessonsView LessonsView;
+    [SerializeField] private Text lessonNameText;
     [SerializeField] private Slider lessonRepeatsBar;
 
-    private void Awake()
+    public void InitializeLesson(LessonInfo lessonInfo, LessonsView lessonsView)
     {
-        lessonRepeatsBar.value = PlayerPrefs.GetInt(lesson.LessonName, 0);
+        LessonInfo = lessonInfo;
+        LessonsView = lessonsView;
+        Debug.Log(PlayerPrefs.GetInt(LessonInfo.LessonName, 0));
+        lessonRepeatsBar.maxValue = lessonInfo.NumberOfRepeats;
+        lessonRepeatsBar.value = PlayerPrefs.GetInt(LessonInfo.LessonName, 0);
+        lessonNameText.text = LessonInfo.LessonName;
     }
 
     public void Success()
     {
         Variables.Data.LessonsDone++;
         Variables.Data.Cash += 50;
+        Variables.SaveData();
         if(lessonRepeatsBar.value != lessonRepeatsBar.maxValue)
         {
+            Debug.Log("more");
             lessonRepeatsBar.value++;
-            PlayerPrefs.SetInt(lesson.LessonName, (int)lessonRepeatsBar.value);
+            Debug.Log(lessonRepeatsBar.value);
+            PlayerPrefs.SetInt(LessonInfo.LessonName, (int)lessonRepeatsBar.value);
+            Debug.Log(PlayerPrefs.GetInt(LessonInfo.LessonName, 0));
         }
+    }
+
+    public void CloseLesson()
+    {
+        LessonsView.LessonsActivity.Activate();
     }
 
     public void StartLesson()
     {
+        Debug.Log("start lesson");
         if(Variables.Data.HP > 0)
         {
-            questionsGenerator.StartGenerating(lesson, this);
-            lessonActivity.Activate();
+            LessonsView.StartLesson(LessonInfo, this);
         }
     }
 }

@@ -8,19 +8,28 @@ public class Activity : MonoBehaviour
     public UnityEvent OnActivate;
     public UnityEvent OnDeactivate;
 
+    public bool NeedDeactivateGameObject = true;
+
     public void Activate()
     {
         ActivitiesController.CurrentActivity?.Deactivate();
-        OnActivate.Invoke();
+        OnActivate?.Invoke();
         ActivitiesController.CurrentActivity = this;
-        gameObject.SetActive(true);
+        if (NeedDeactivateGameObject)
+        {
+            gameObject.SetActive(true);
+        }
+        
     }
 
     public void Deactivate()
     {
         if(ActivitiesController.CurrentActivity == this)
             ActivitiesController.CurrentActivity = null;
-        OnDeactivate.Invoke();
-        gameObject.SetActive(false);
+        OnDeactivate?.Invoke();
+        if (NeedDeactivateGameObject)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
